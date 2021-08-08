@@ -1,0 +1,18 @@
+{
+  "name": "backtest",
+  "version": "1.0.0",
+  "description": "![UML](uml.jpg)",
+  "main": "example.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "bin": {
+    "sp": "./cli/command.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^8.1.0",
+    "inquirer": "^8.1.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "split-tool",
+  "version": "1.0.0",
+  "description": "split datas/Pirce/data.json for your expected information",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerdependencies": {
+    "commander": "^8.1.0",
+    "inquirer": "^8.1.2"
+  }
+}
