@@ -1,12 +1,12 @@
 const Wrapper = require("./components/wrapper");
-const Date = require("./components/date");
+const DateSequence = require("./components/date");
 
 // 提供測試資料
 const fs = require("fs");
-let rawdata = fs.readFileSync("./datas/testData/20210705.json");
+let rawdata = fs.readFileSync("./datas/testData/20210810.json");
 let stockdata = JSON.parse(rawdata);
 
-let date = new Date({
+let date = new DateSequence({
     defaultDataCount:19,
     data:stockdata
   });
@@ -17,4 +17,4 @@ wrapper.run();
 let show = wrapper.show();
 let history = wrapper.history();
 
-console.log(show);
+console.log(history);

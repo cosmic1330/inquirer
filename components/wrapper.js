@@ -23,8 +23,8 @@ class Wrapper {
   }
 
   run() {
-    for (let i = 20; i < this.date.getLength(); i++) {
-      this.date.setNext();
+    while (this.date.currentDate<=this.date.endDate) {
+      this.date.setNext()
     }
   }
 
@@ -58,13 +58,11 @@ class Wrapper {
     if (detail) {
       obj["目前持股"] = data;
     }
-    // console.log(obj);
     return obj;
   }
 
   history() {
     let data = this.context.stock.getHistory();
-    // console.log(data);
     return data;
   }
 }

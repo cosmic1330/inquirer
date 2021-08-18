@@ -38,8 +38,13 @@ class Context {
     */
 
     let list = this.subject.getList();
+    let currentDate = this.subject.getCurrentDate();
     let handle = this.stock.get();
     Object.keys(list).forEach((key) => {
+      // 如果資料長度不符合跳過
+      if(list[key][list[key].length-1]['t']!==currentDate || list[key].length-1<30){
+        return;
+      }
       //  設定買進方式-------------------------------------------------
       let response = this.buyMethod.method3(list, key);
       //  ------------------------------------------------------------
@@ -87,8 +92,13 @@ class Context {
         符合邏輯且大於買進價格賣出
     */
     let list = this.subject.getList();
+    let currentDate = this.subject.getCurrentDate();
     let handle = this.stock.get();
     Object.keys(handle).forEach((key) => {
+      // 如果資料長度不符合跳過
+      if(list[key][list[key].length-1]['t']!==currentDate || list[key].length-1<30){
+        return;
+      }
       //  設定賣出方式-------------------------------------------------
       let response = this.sellMethod.method3(list, key);
       //  ------------------------------------------------------------
@@ -145,8 +155,13 @@ class Context {
   }
   updateNowPrice() {
     let list = this.subject.getList();
+    let currentDate = this.subject.getCurrentDate();
     let handle = this.stock.get();
     Object.keys(handle).forEach((key) => {
+      // 如果資料長度不符合跳過
+      if(list[key][list[key].length-1]['t']!==currentDate || list[key].length-1<30){
+        return;
+      }
       let price = list[key][list[key].length - 1]["c"];
       this.stock.update(key, price);
     });
