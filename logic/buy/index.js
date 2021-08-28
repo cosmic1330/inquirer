@@ -80,32 +80,6 @@ class BuyMethod {
   method2(list, key) {
     /* 
       買進:
-        主力買進兩日
-    */
-    let rsi = this.rsi.getRSI6(list[key]);
-    let ma = this.ma.getMA(rsi);
-
-    let response = list[key][list[key].length - 1];
-    if (
-      ma[ma.length - 2]["stockAgentMainPower"] > 1000 &&
-      ma[ma.length - 3]["stockAgentMainPower"] > 1000
-    ) {
-      /* 
-        custom提供驗證訊息
-      */
-      response["custom"] = {
-        date: list[key][list[key].length - 2]["t"],
-      };
-      response = this.filterData(response, 2, ma);
-    } else {
-      response.status = false;
-    }
-    return response;
-  }
-
-  method3(list, key) {
-    /* 
-      買進:
         投信買進兩日
     */
     let ma = this.ma.getMA(list[key]);
@@ -130,7 +104,7 @@ class BuyMethod {
     return response;
   }
 
-  method4(list, key) {
+  method3(list, key) {
     /* 
       買進:
         外資買進三日
@@ -152,42 +126,6 @@ class BuyMethod {
         beforeSumING: ma[ma.length - 3]["sumING"],
       };
       response = this.filterData(response, 4, ma);
-    } else {
-      response.status = false;
-    }
-    return response;
-  }
-
-  method5(list, key) {
-    /* 
-      買進:
-        不高於布林通道(頂部)
-        主力買進
-        兩日不破前低
-        配合賣出方法2
-    */
-    let ma = this.ma.getMA(list[key]);
-    let macd = this.macd.getMACD(ma);
-
-    let response = ma[ma.length - 1];
-    if (
-      macd[macd.length - 2]["v"] > 1000 &&
-      macd[macd.length - 2]["c"] < macd[macd.length - 2]["UB"] &&
-      macd[macd.length - 2]["stockAgentMainPower"] > 500 &&
-      macd[macd.length - 3]["stockAgentMainPower"] > 500 &&
-      macd[macd.length - 2]["l"] > macd[macd.length - 3]["l"] &&
-      macd[macd.length - 3]["l"] > macd[macd.length - 4]["l"] &&
-      ((macd[macd.length - 2]["OSC"] > 0 && macd[macd.length - 3]["OSC"] < 0) ||
-        (macd[macd.length - 2]["OSC"] > macd[macd.length - 3]["OSC"] &&
-          macd[macd.length - 2]["OSC"] > 0))
-    ) {
-      /* 
-        custom提供驗證訊息
-      */
-      response["custom"] = {
-        date: ma[ma.length - 2]["t"],
-      };
-      response = this.filterData(response, 5, list[key]);
     } else {
       response.status = false;
     }

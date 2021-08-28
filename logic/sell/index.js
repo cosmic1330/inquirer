@@ -53,34 +53,6 @@ class SellMethod {
   method2(list, key) {
     /* 
        賣出:
-          主力賣出時
-    */
-    let rsi = this.rsi.getRSI6(list[key]);
-    let ma = this.ma.getMA(rsi);
-    let response = ma[ma.length - 1];
-    if (
-      ma[ma.length - 2]["stockAgentMainPower"] < -100 &&
-      ma[ma.length - 3]["stockAgentMainPower"] < -100 &&
-      ma[ma.length - 4]["stockAgentMainPower"] < -100
-    ) {
-      /* 
-        custom提供驗證訊息
-      */
-      response["custom"] = {
-        date: ma[ma.length - 1]["t"],
-        method: 2,
-        class: "sell",
-      };
-      response.status = true;
-    } else {
-      response.status = false;
-    }
-    return response;
-  }
-
-  method3(list, key) {
-    /* 
-       賣出:
           投信賣出時
     */
     let ma = this.ma.getMA(list[key]);
@@ -106,7 +78,7 @@ class SellMethod {
     return response;
   }
 
-  method4(list, key) {
+  method3(list, key) {
     /* 
        賣出:
           外資賣出時
