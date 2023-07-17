@@ -3,7 +3,7 @@ const DateSequence = require("./components/date");
 
 // 提供測試資料
 const fs = require("fs");
-let rawdata = fs.readFileSync("./datas/testData/20210810.json");
+let rawdata = fs.readFileSync("./datas/testData/20210828.json");
 let stockdata = JSON.parse(rawdata);
 
 let date = new DateSequence({
